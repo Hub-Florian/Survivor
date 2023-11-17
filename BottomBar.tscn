@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://p371oyaywpqb"]
+
+[ext_resource type="Script" path="res://BottomBar.gd" id="1_x2dhu"]
+[ext_resource type="Texture2D" uid="uid://bmqu5om2c3unp" path="res://assets/menu/sword_item.png" id="2_10tt5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p87p8"]
+bg_color = Color(0.776471, 0.639216, 0.0941176, 1)
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_5lakt"]
+Button/styles/normal = SubResource("StyleBoxFlat_p87p8")
+
+[node name="BottomBar" type="HBoxContainer" node_paths=PackedStringArray("buttons")]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -180.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+script = ExtResource("1_x2dhu")
+buttons = [NodePath("LeftLeftMenuButton"), NodePath("LeftMenuButton"), NodePath("CenterMenuButton"), NodePath("RightMenuButton"), NodePath("RightRightMenuButton")]
+
+[node name="LeftLeftMenuButton" type="Button" parent="."]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="LeftMenuButton" type="Button" parent="."]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+icon_alignment = 1
+
+[node name="CenterMenuButton" type="Button" parent="."]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme = SubResource("Theme_5lakt")
+icon = ExtResource("2_10tt5")
+icon_alignment = 1
+
+[node name="RightMenuButton" type="Button" parent="."]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="RightRightMenuButton" type="Button" parent="."]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[connection signal="button_up" from="LeftLeftMenuButton" to="." method="_on_left_left_menu_button_button_up"]
+[connection signal="button_up" from="LeftMenuButton" to="." method="_on_left_menu_button_button_up"]
+[connection signal="button_up" from="CenterMenuButton" to="." method="_on_center_menu_button_button_up"]
+[connection signal="button_up" from="RightMenuButton" to="." method="_on_right_menu_button_button_up"]
+[connection signal="button_up" from="RightRightMenuButton" to="." method="_on_right_right_menu_button_button_up"]
