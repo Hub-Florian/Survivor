@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxel3sel0jfxd"]
+
+[ext_resource type="PackedScene" uid="uid://bktbfetmip67k" path="res://joystick.tscn" id="1_qnb87"]
+[ext_resource type="Texture2D" uid="uid://d16ad0u40i44m" path="res://assets/dirt_full_new.png" id="1_tn82s"]
+[ext_resource type="PackedScene" uid="uid://23dt2wyg1nqj" path="res://player.tscn" id="2_wph4y"]
+[ext_resource type="Script" path="res://player.gd" id="3_06ibj"]
+
+[node name="World" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+texture_repeat = 2
+texture = ExtResource("1_tn82s")
+region_enabled = true
+region_rect = Rect2(0, 0, 10000, 10000)
+
+[node name="Player" parent="." instance=ExtResource("2_wph4y")]
+script = ExtResource("3_06ibj")
+
+[node name="Joystick" parent="." instance=ExtResource("1_qnb87")]
+
+[connection signal="move_vector" from="Joystick" to="Player" method="_on_joystick_move_vector"]

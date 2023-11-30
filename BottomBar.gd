@@ -3,10 +3,18 @@ extends HBoxContainer
 @export var buttons: Array[Button]
 
 enum Place {LeftLeft, Left, Center, Right, RightRight}
+var yellow_theme: Theme
+var yellow_style: StyleBoxFlat
 
 func _ready():
-	buttons[Place.Center].custom_minimum_size.x *= 1.8
-	buttons[Place.Center].expand_icon = true
+	var centerButton = buttons[Place.Center]
+	centerButton.custom_minimum_size.x *= 1.8
+	centerButton.expand_icon = true
+	yellow_theme = Theme.new()
+	yellow_style = StyleBoxFlat.new()
+	yellow_style.bg_color = Color(1, 1, 0)
+	yellow_theme.set_stylebox("yellow_background", "StyleBoxFlat", yellow_style)
+	centerButton.set_theme(yellow_theme)
 
 func _process(delta):
 	pass
